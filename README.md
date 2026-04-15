@@ -116,11 +116,10 @@ Die finalen Statistiken sind in der GitHub-Ablage als PDF-Dateien gespeichert.
 **Datensätze:**
 - `metadata.csv`: Probenparameter (Sample_ID, Feldstärke, Objekt, Träger, Mode, Inhaltsstoffe)  
 - `total_featuretable.csv`: Rohdaten  
-- `df_summary.csv`: Aggregierter Datensatz  
-
+- `df_summary.csv`: Rohdaten aus `total_featuretable.csv` wurden verwendet. Duplikate (*in vivo*) und Triplikate (*in vitro*) wurden zu Mittelwerten und Standardabweichungen zusammengefasst und Probenspezifische Metadaten in den Datensatz integriert. Das resultierende `df_summary.csv` bildet die Grundlage für die statistische Auswertung.
 ---
 
-## Installation & Nutzung
+## Statistische Auswertung mittels Jupyter Notebook
 
 ### 1. Voraussetzungen
 
