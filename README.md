@@ -132,6 +132,16 @@ Die Pipeline benötigt drei zentrale Pfade, die manuell im Code gesetzt werden:
 * **Ausgabeordner für Daten:** Speicherung von CSV-Tabellen
 * **Ausgabeordner für Ergebnisse:** Speicherung von Grafiken (PDF)
 
+**WICHTIG:** Pfade im Code anpassen!
+Bevor Sie das Skript ausführen, müssen Sie die Datenpfade für die Auswertungen an Ihren eigenen Computer anpassen:
+* Suchen Sie ganz oben im Code den Abschnitt **`# 1. SETUP UND DATEIPFADE`**.
+* Ändern Sie die Pfade bei `out_dir_data` und `out_dir_result` so, dass sie auf einen gewünschten Ordner auf Ihrem Computer zeigen.
+
+**Aktueller Code (Beispiel):**
+```python
+input_file = 'total_featuretable.csv'
+out_dir_data = '/Users/lauracam/Library/CloudStorage/Dropbox/ETH/Muriel/Resultate'
+out_dir_result = '/Users/lauracam/Library/CloudStorage/Dropbox/ETH/Muriel/Resultate'
 ### 3. Definition von Zuordnungstabellen (Metadaten)
 Es werden Zuordnungstabellen definiert, um den rohen Daten Kontext zu geben:
 * **Messmodi:** MRT-Sequenzen (z. B. SWI, T1-TSE, T2-TSE)
