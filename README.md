@@ -119,44 +119,17 @@ Die finalen Statistiken sind in der GitHub-Ablage als PDF-Dateien gespeichert.
 - `df_summary.csv`: Rohdaten aus `total_featuretable.csv` wurden verwendet. Duplikate (*in vivo*) und Triplikate (*in vitro*) wurden zu Mittelwerten und Standardabweichungen zusammengefasst und Probenspezifische Metadaten in den Datensatz integriert. Das resultierende `df_summary.csv` bildet die Grundlage für die statistische Auswertung.
 ---
 
-## Statistische Auswertung mittels Jupyter Notebook
+## Statistische Auswertung
 
-### 1. Voraussetzungen
-
-Python sowie folgende Bibliotheken:
-
-```python
-import os
-import numpy as np
-import pandas as pd
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-sns.set_theme(style="whitegrid")
-```
-
----
-
-### 2. Durchführung
-
-1. Repository klonen oder Dateien lokal speichern  
-2. Sicherstellen, dass sich `total_featuretable.csv` im selben Verzeichnis wie das Notebook befindet  
-3. Jupyter Notebook starten:
-
-```bash
-jupyter notebook muriel_auswertunge.ipynb
-```
-
-4. Alle Zellen der Reihe nach ausführen  
+  
 
 ---
 
 ## Methodische Hinweise
 
-- Artefaktflächen wurden manuell in **cm²** vermessen  
+- Artefaktflächen wurden manuell in cm² vermessen  
 - Daten wurden in CSV-Dateien strukturiert erfasst  
-- Analyse erfolgt vollständig in einer Python-Umgebung  
+- Die Analyse erfolgt in einer Python-Umgebung  
 
 **Hinweis:**  
 Dieses Projekt dient ausschließlich wissenschaftlichen Zwecken im Rahmen der Ausbildung *Medizinisch-Technische Radiologie HF*.
