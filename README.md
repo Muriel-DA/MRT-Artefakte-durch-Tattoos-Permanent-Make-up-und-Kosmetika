@@ -19,7 +19,7 @@
 2. [Methodik](#methodik)  
 3. [Zentrale Ergebnisse & Abbildungen](#zentrale-ergebnisse--abbildungen)  
 4. [Repository-Struktur](#repository-struktur)  
-5. [Installation & Nutzung](#installation--nutzung)  
+5. [Statistische Auswertung](#statistische-auswertung)  
 6. [Methodische Hinweise](#methodische-hinweise)  
 
 ---
