@@ -142,7 +142,7 @@ Bevor Sie das Skript ausführen, müssen Sie die Datenpfade für die Auswertunge
 input_file = 'total_featuretable.csv'
 out_dir_data = '/Users/lauracam/Library/CloudStorage/Dropbox/ETH/Muriel/Resultate'
 out_dir_result = '/Users/lauracam/Library/CloudStorage/Dropbox/ETH/Muriel/Resultate'
-```python
+```
 
 ### 3. Definition von Zuordnungstabellen (Metadaten)
 Es werden Zuordnungstabellen definiert, um den rohen Daten Kontext zu geben:
