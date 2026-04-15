@@ -121,7 +121,68 @@ Die finalen Statistiken sind in der GitHub-Ablage als PDF-Dateien gespeichert.
 
 ## Statistische Auswertung
 
-  
+Die statistische Auswertung erfolgt via automatisierte Pipeline in einem Jupyter Notebook umgesetzt.
+
+### 1. Bibliotheken und Setup
+Zu Beginn werden alle benötigten Python-Bibliotheken (z. B. Pandas, Seaborn, Matplotlib) geladen.
+
+### 2. Definition der Eingabe- und Ausgabeordner
+Die Pipeline benötigt drei zentrale Pfade, die manuell im Code gesetzt werden:
+* **Eingabedatei:** Rohdaten (`total_featuretable.csv`)
+* **Ausgabeordner für Daten:** Speicherung von CSV-Tabellen
+* **Ausgabeordner für Ergebnisse:** Speicherung von Grafiken (PDF)
+
+### 3. Definition von Zuordnungstabellen (Metadaten)
+Es werden Zuordnungstabellen definiert, um den rohen Daten Kontext zu geben:
+* **Messmodi:** MRT-Sequenzen (z. B. SWI, T1-TSE, T2-TSE)
+* **Farbcodes:** Zuordnung zu konkreten Produkten oder Pigmenten
+* **Materialinformationen:** Hersteller, Inhaltsstoffe und Produktnamen
+
+### 4. Einlesen und Vorverarbeitung
+Die Datei `total_featuretable.csv` wird eingelesen, bereinigt und für die weitere Verarbeitung vorbereitet.
+
+### 5. Extraktion von Metadaten aus Spaltennamen
+Codierte Informationen in den Spaltennamen werden systematisch zerlegt:
+* **Magnetfeldstärke:** (z. B. 1.5T oder 3.0T)
+* **Probenart:** (Phantom oder Proband)
+* **MRT-Sequenz:** (Mode)
+* **Farbcode & Replikatnummer**
+
+Zusätzlich werden abgeleitete Eigenschaften wie **Trägermaterial** (Wimpern/Kunsthaut), **Objektklasse** und **Pigmentkategorie** (Kosmetik, Tattoo, PMU) hinzugefügt.
+
+### 6. Berechnung der Messgrösse (Artefaktfläche)
+Die Rohmessdaten werden geometrisch ausgewertet:
+
+$$\text{Artefaktfläche} = \text{Breite} \times \text{Tiefe}$$
+
+Diese Grösse beschreibt die Ausdehnung eines Bildartefakts in cm² und dient als zentrale abhängige Variable.
+
+### 7. Transformation und Datengrundlage
+Die Daten werden in ein Analyseformat überführt und über die **Sample-ID** mit den Metadaten zusammengeführt. Die resultierende Tabelle enthält alle relevanten Informationen (Messwert, Feldstärke, Objekt, Material, Farbe, Sequenz) für die Statistik.
+
+### 8. Statistische Aggregation
+Die Daten werden nach Gruppen (z. B. Feldstärke, Pigmentkategorie, Hersteller) zusammengefasst. Für jede Gruppe werden berechnet:
+* **Mittelwert** der Artefaktfläche
+* **Standardabweichung**
+
+### 9. Export und Visualisierungs-Setup
+* **Export:** Die Ergebnisse werden als Unicode-kodierte CSV-Dateien für Excel oder externe Software gespeichert.
+* **Styling:** Definition von Schriftgrössen, Farbpaletten für Sequenzen und Layout-Regeln für einheitliche Grafiken.
+* **Hilfsfunktionen:** Funktionen für das Achsen-Styling und die Identifikation von Ausreissern (IQR-Methode).
+
+### 10. Visualisierungen und Ergebnisausgabe
+Die Analyse erzeugt mehrere grafische Darstellungen (Export als PDF):
+
+* **10.1 Artefaktentstehung:** Vergleich der Häufigkeit nach Pigmentkategorie (gestapeltes Balkendiagramm).
+* **10.2 Feldstärken:** Vergleich 1.5T vs. 3.0T mittels Boxplots inkl. Ausreisseranalyse.
+* **10.3 MRT-Sequenzen:** Mittelwerte und Fehlerbalken pro Sequenz.
+* **10.4 Modelle:** Vergleich Phantom vs. Proband sowie Kunsthaut vs. Wimpern.
+
+## Ergebnis der Pipeline
+Nach vollständiger Ausführung liegen vor:
+* **Annotierte Datensätze:** Vollständig strukturierte Tabellen.
+* **Statistische Auswertungen:** CSV-Exporte für Mittelwerte und Gruppenvergleiche.
+* **Grafiken:** Publikationstaugliche Abbildungen im PDF-Format.
 
 ---
 
