@@ -191,7 +191,7 @@ Die Analyse erzeugt mehrere grafische Darstellungen (Export als PDF):
 Nach vollständiger Ausführung liegen vor:
 * **Annotierte Datensätze:** Vollständig strukturierte Tabellen.
 * **Statistische Auswertungen:** CSV-Exporte für Mittelwerte und Gruppenvergleiche.
-* **Grafiken:** Publikationstaugliche Abbildungen im PDF-Format.
+* **Grafiken:** Abbildungen im PDF-Format.
 
 ---
 
