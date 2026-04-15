@@ -135,9 +135,7 @@ Die Pipeline benötigt drei zentrale Pfade, die manuell im Code gesetzt werden:
 **WICHTIG:** Pfade im Code anpassen!
 Bevor Sie das Skript ausführen, müssen Sie die Datenpfade für die Auswertungen an Ihren eigenen Computer anpassen:
 * Suchen Sie ganz oben im Code den Abschnitt **`# 1. SETUP UND DATEIPFADE`**.
-* Ändern Sie die Pfade bei `out_dir_data` und `out_dir_result` so, dass sie auf einen gewünschten Ordner auf Ihrem Computer zeigen.
-
-**Aktueller Code (Beispiel):**
+* Ändern Sie die Pfade bei `out_dir_data` und `out_dir_result` so, dass sie auf einen gewünschten Ordner auf Ihrem Computer zeigen:
 ```python
 input_file = 'total_featuretable.csv'
 out_dir_data = '/Users/lauracam/Library/CloudStorage/Dropbox/ETH/Muriel/Resultate'
