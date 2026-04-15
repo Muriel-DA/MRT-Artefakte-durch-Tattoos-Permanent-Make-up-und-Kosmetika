@@ -137,7 +137,6 @@ Bevor Sie das Skript ausführen, müssen Sie die Datenpfade für die Auswertunge
 * Suchen Sie ganz oben im Code den Abschnitt **`# 1. SETUP UND DATEIPFADE`**.
 * Ändern Sie die Pfade bei `out_dir_data` und `out_dir_result` so, dass sie auf einen gewünschten Ordner auf Ihrem Computer zeigen:
 ```python
-input_file = 'total_featuretable.csv'
 out_dir_data = '/Users/lauracam/Library/CloudStorage/Dropbox/ETH/Muriel/Resultate'
 out_dir_result = '/Users/lauracam/Library/CloudStorage/Dropbox/ETH/Muriel/Resultate'
 ```
