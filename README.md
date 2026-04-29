@@ -93,24 +93,22 @@ Die finalen Statistiken sind in der GitHub-Ablage als PDF-Dateien gespeichert.
 
 ## Repository-Struktur
 
-```
-├── data/
-│   ├── *.csv
-│   │   ├── metadata.csv
-│   │   ├── total_featuretable.csv
-│   │   ├── df_summary.csv
-│   │   └── spezifische_datensaetze.csv
+```text
+├── Bilder/
+│   └── [Sämtliche MRT-Aufnahmen nach Sequenz & Setting geordnet]
 │
-├── images/
-│   ├── *.png  (MRT-Aufnahmen nach Sequenz & Setting)
+├── Code/
+│   └── muriel_auswertung.ipynb      # Jupyter Notebook für die statistische Analyse
 │
-├── results/
-│   ├── *.pdf  (finale Abbildungen)
+├── Daten/
+│   ├── metadata.csv                 # Probenparameter (Inhaltsstoffe, IDs, Hersteller)
+│   └── total_featuretable.csv       # Rohdaten der Artefaktvermessung
 │
-├── notebooks/
-│   └── muriel_auswertunge.ipynb
+├── Resultate/
+│   ├── [Tabelle].csv                # Zusammengefasste Daten
+│   └── [Grafiken].pdf               # Finale Abbildungen für die Diplomarbeit
 │
-└── README.md
+└── README.md                        # Dokumentation Repository
 ```
 
 **Datensätze:**
