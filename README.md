@@ -28,7 +28,7 @@
 
 Dieses Repository enthält die Forschungsdaten, MRI Bilder und das Auswertungsskript der Diplomarbeit **"Artefaktbildung durch kutane Pigmente in der Magnetresonanztomographie: *In-vitro*- und *in-vivo*-Analyse von Tattoos, Permanent Make-up und Kosmetika"**.
 
-Ziel der Arbeit ist die systematische Quantifizierung von Suszeptibilitätsartefakten, die durch metallhaltige Pigmente in Alltagsprodukten verursacht werden, um die diagnostische Sicherheit zu erhöhen.
+Ziel der Arbeit ist die Quantifizierung von Suszeptibilitätsartefakten, die durch metallhaltige Pigmente in Alltagsprodukten verursacht werden, um die diagnostische Sicherheit zu erhöhen.
 
 ### Untersuchungsdesign & Methodik
 Die Diplomarbeit basiert auf einem systematischen Vergleich von Einflussfaktoren in einem kontrollierten Versuchsaufbau:
@@ -105,8 +105,8 @@ Die finalen Statistiken sind in der GitHub-Ablage als PDF-Dateien gespeichert.
 │   └── total_featuretable.csv       # Rohdaten der Artefaktvermessung
 │
 ├── Resultate/
-│   ├── [Tabelle].csv                # Zusammengefasste Daten
-│   └── [Grafiken].pdf               # Finale Abbildungen für die Diplomarbeit
+│   ├── [Tabelle für Statistik].csv  # Zusammengefasste Daten
+│   └── [Grafik Statistik].pdf       # Finale Abbildungen für die Diplomarbeit
 │
 └── README.md                        # Dokumentation Repository
 ```
@@ -119,10 +119,10 @@ Die finalen Statistiken sind in der GitHub-Ablage als PDF-Dateien gespeichert.
 
 ## Statistische Auswertung
 
-Die statistische Auswertung erfolgt via automatisierte Pipeline in einem Jupyter Notebook umgesetzt.
+Die statistische Auswertung erfolgt via einer python basierten Pipeline in einem Jupyter Notebook.
 
 ### 1. Bibliotheken und Setup
-Zu Beginn werden alle benötigten Python-Bibliotheken (z. B. Pandas, Seaborn, Matplotlib) geladen.
+Zu Beginn werden alle benötigten Python-Bibliotheken geladen.
 
 ### 2. Definition der Eingabe- und Ausgabeordner
 Die Pipeline benötigt drei zentrale Pfade, die manuell im Code gesetzt werden:
@@ -131,7 +131,7 @@ Die Pipeline benötigt drei zentrale Pfade, die manuell im Code gesetzt werden:
 * **Ausgabeordner für Ergebnisse:** Speicherung von Grafiken (PDF)
 
 **WICHTIG:** Pfade im Code anpassen!
-Bevor Sie das Skript ausführen, müssen Sie die Datenpfade für die Auswertungen an Ihren eigenen Computer anpassen:
+Bevor das Skript ausgeführt wird, müssen folgende Datenpfade angepasst werden:
 * Suchen Sie ganz oben im Code den Abschnitt **`# 1. SETUP UND DATEIPFADE`**.
 * Ändern Sie die Pfade bei `out_dir_data` und `out_dir_result` so, dass sie auf einen gewünschten Ordner auf Ihrem Computer zeigen:
 ```python
@@ -146,23 +146,24 @@ Es werden Zuordnungstabellen definiert, um den rohen Daten Kontext zu geben:
 * **Materialinformationen:** Hersteller, Inhaltsstoffe und Produktnamen
 
 ### 4. Einlesen und Vorverarbeitung
-Die Datei `total_featuretable.csv` wird eingelesen, bereinigt und für die weitere Verarbeitung vorbereitet.
+Die Datei `total_featuretable.csv` wird eingelesen und für die weitere Verarbeitung vorbereitet.
 
 ### 5. Extraktion von Metadaten aus Spaltennamen
-Codierte Informationen in den Spaltennamen werden systematisch zerlegt:
+Informationen im Dateinamen werden aufgeteilt:
 * **Magnetfeldstärke:** (z. B. 1.5T oder 3.0T)
-* **Probenart:** (Phantom oder Proband)
+* **Objektdaten:** (Phantom oder Proband)
 * **MRT-Sequenz:** (Mode)
-* **Farbcode & Replikatnummer**
-
-Zusätzlich werden abgeleitete Eigenschaften wie **Trägermaterial** (Wimpern/Kunsthaut), **Objektklasse** und **Pigmentkategorie** (Kosmetik, Tattoo, PMU) hinzugefügt.
+* **Farbcode**
+* **Replikatnummer**
+* **Trägermaterial** (Wimpern/Kunsthaut)
+* **Pigmentkategorie** (Kosmetik, Tattoo, PMU) hinzugefügt.
 
 ### 6. Berechnung der Messgrösse (Artefaktfläche)
-Die Rohmessdaten werden geometrisch ausgewertet:
+Die Rohmessdaten werden wie folgt ausgewertet:
 
 $$\text{Artefaktfläche} = \text{Breite} \times \text{Tiefe}$$
 
-Diese Grösse beschreibt die Ausdehnung eines Bildartefakts in cm² und dient als zentrale abhängige Variable.
+Diese Grösse beschreibt die Ausdehnung eines Bildartefakts in cm².
 
 ### 7. Transformation und Datengrundlage
 Die Daten werden in ein Analyseformat überführt und über die **Sample-ID** mit den Metadaten zusammengeführt. Die resultierende Tabelle enthält alle relevanten Informationen (Messwert, Feldstärke, Objekt, Material, Farbe, Sequenz) für die Statistik.
@@ -173,16 +174,16 @@ Die Daten werden nach Gruppen (z. B. Feldstärke, Pigmentkategorie, Hersteller) 
 * **Standardabweichung**
 
 ### 9. Export und Visualisierungs-Setup
-* **Export:** Die Ergebnisse werden als Unicode-kodierte CSV-Dateien für Excel oder externe Software gespeichert.
-* **Styling:** Definition von Schriftgrössen, Farbpaletten für Sequenzen und Layout-Regeln für einheitliche Grafiken.
-* **Hilfsfunktionen:** Funktionen für das Achsen-Styling und die Identifikation von Ausreissern (IQR-Methode).
+* **Export:** Die Ergebnisse werden als CSV-Dateien gespeichert.
+* **Styling:** Definition Layout Parameter.  
+* **Hilfsfunktionen:** Definition der Messachsengrössen sowie Identifikation von Ausreissern.
 
 ### 10. Visualisierungen und Ergebnisausgabe
 Die Analyse erzeugt mehrere grafische Darstellungen (Export als PDF):
 
-* **10.1 Artefaktentstehung:** Vergleich der Häufigkeit nach Pigmentkategorie (gestapeltes Balkendiagramm).
-* **10.2 Feldstärken:** Vergleich 1.5T vs. 3.0T mittels Boxplots inkl. Ausreisseranalyse.
-* **10.3 MRT-Sequenzen:** Mittelwerte und Fehlerbalken pro Sequenz.
+* **10.1 Artefaktentstehung:** Vergleich der Häufigkeit nach Pigmentkategorie.
+* **10.2 Feldstärken:** Vergleich 1.5 T vs. 3.0 T mittels Boxplots.
+* **10.3 MRT-Sequenzen:** Vergleich der verschiedenen Sequenzen mittels Balkendiagramm.
 * **10.4 Modelle:** Vergleich Phantom vs. Proband sowie Kunsthaut vs. Wimpern.
 
 ## Ergebnis der Pipeline
@@ -200,4 +201,4 @@ Nach vollständiger Ausführung liegen vor:
 - Die Analyse erfolgt in einer Python-Umgebung  
 
 **Hinweis:**  
-Dieses Projekt dient ausschließlich wissenschaftlichen Zwecken im Rahmen der Ausbildung *Medizinisch-Technische Radiologie HF*.
+Dieses Projekt dient ausschliesslich wissenschaftlichen Zwecken im Rahmen der Ausbildung *Medizinisch-Technische Radiologie HF*.
