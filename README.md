@@ -8,7 +8,7 @@
 
 - **Autorin:** Calibran Muriel  
 - **Institution:** BZG Bildungszentrum Gesundheit Basel-Stadt  
-- **Bildungsgang:** Medizinisch-Technische Radiologie HF (BG MTR 23H)  
+- **Bildungsgang:** Medizinisch-Technische Radiologie HF (BG MTR 23)  
 - **Eingereicht:** Münchenstein 26.04.2026
 
 ---
